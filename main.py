@@ -44,9 +44,14 @@ def print_board():
 
 
 
-# creates a 3x3 subgrid from the board
+# creates a 2D array of a 3x3 subgrid from the board, passes in a 2D array
 def create_subgrid(grid, x_pos: int, y_pos: int):
-	
+	subgrid = [[0,0,0],[0,0,0],[0,0,0]]
+	for i in range(0,3,1):
+		for j in range(0,3,1):
+			subgrid[i][j] = grid[i+3*x_pos-3][j+3*y_pos-3]
+
+	return subgrid
 
 
 
@@ -86,15 +91,20 @@ def check_subgrid(_subgrid):
 
 
 def main():
-	#print_board()
+	print_board()
 	grid = [
 		[1,2,3],
 		[5,5,6],
 		[7,8,9]
 	]
 
+
+	sub = create_subgrid(board,1,2)
+	print(sub)
+	print(check_subgrid(sub))
+
 	# start = timeit.timeit()
-	print(check_subgrid(grid))
+	#print(check_subgrid(grid))
 	# end = timeit.timeit()
 	# print(end - start)
 
