@@ -1,6 +1,7 @@
 # sudoku solver by Matthew Barbattini
 
 import numpy as np
+import timeit
 
 # initialize the board
 board = []
@@ -42,29 +43,38 @@ def print_board():
 			print("\n")
 
 
-# dict for each number 1-9 and their frequency
-number_dict = {
-	1: 0,
-	2: 0,
-	3: 0,
-	4: 0,
-	5: 0,
-	6: 0,
-	7: 0,
-	8: 0,
-	9: 0
-}
+
+# creates a 3x3 subgrid from the board
+def create_subgrid(grid, x_pos: int, y_pos: int):
+	
+
+
+
 
 
 # checks if the 3x3 subgrid has more than 1 of each number in it
 def check_subgrid(_subgrid):
+	# dict for each number 1-9 and their frequency
+	number_dict = {
+		0: 0,
+		1: 0,
+		2: 0,
+		3: 0,
+		4: 0,
+		5: 0,
+		6: 0,
+		7: 0,
+		8: 0,
+		9: 0
+	}
 	# loop through all 9 positions and update each number's frequency
-	for i in range(3):
-		for j in range(3):
+	for i in range(len(_subgrid)):
+		for j in range(len(_subgrid[0])):
 			num = _subgrid[i][j]
-			number_dict[num] += 1
+			if num != 0:
+				number_dict[num] += 1
 	# if the number has a frequency greater than 1, return false
-	for i in range(9):
+	for i in range(len(number_dict)):
 		if number_dict[i] > 1:
 			return False
 	return True
@@ -76,8 +86,17 @@ def check_subgrid(_subgrid):
 
 
 def main():
-	print_board()
+	#print_board()
+	grid = [
+		[1,2,3],
+		[5,5,6],
+		[7,8,9]
+	]
 
+	# start = timeit.timeit()
+	print(check_subgrid(grid))
+	# end = timeit.timeit()
+	# print(end - start)
 
 
 
