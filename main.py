@@ -112,7 +112,7 @@ def column_check(grid, col_num):
 
 
 # checks if the 3x3 subgrid has more than 1 of each number in it
-def check_subgrid(_subgrid):
+def check_subgrid(subgrid):
 	# dict for each number 1-9 and their frequency
 	number_dict = {
 		0: 0,
@@ -127,9 +127,9 @@ def check_subgrid(_subgrid):
 		9: 0
 	}
 	# loop through all 9 positions and update each number's frequency
-	for i in range(len(_subgrid)):
-		for j in range(len(_subgrid[0])):
-			num = _subgrid[i][j]
+	for i in range(len(subgrid)):
+		for j in range(len(subgrid[0])):
+			num = subgrid[i][j]
 			if num != 0:
 				number_dict[num] += 1
 	# if the number has a frequency greater than 1, return false

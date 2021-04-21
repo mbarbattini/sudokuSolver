@@ -2,44 +2,11 @@ Rules:  each number must be used in each 3x3 grid
         each number must be used in each row
         each number must be used in each column
 
-Algorithm:
-
-    for every 3x3 grid
-        check if it is a valid grid
-            not: start grid test
-            Yes: check the next grid. Recursion
-        if all grids are correct
-            check every row
-                True: check every column
-                False: correct error
-
-        grid test:
-            for i in range(1:9):
-                loop through every cell in grid:
-                    if grid != i
-                        place i in that spot
-
-
-        for every 3x3 grid
-            valid numbers = [1:9]
-            for all cells in a 3x3 grid
-                if cell has a number
-                    remove number from arr
-            place the valid number in [0,0]
-                check if row requirement is satisfied
-                    false: try next number
-                    true: continue
-                check if col requirement is satisfied
-                    false: try next number
-                    true: place number in the spot
-                        remove number from valid number arr
-                no valid:
-                    dont place the number, move on to next
-
-            if grid is finished but incomplete
-                move on to the next grid
-            
-            if grid is finished
-                move on to the next grid
+Find some empty space
+Attempt to place the digits 1-9 in that space
+Check if that digit is valid in the current spot based on the current board
+ a. If the digit is valid, recursively attempt to fill the board using steps 1-3.
+b. If it is not valid, reset the square you just filled and go back to the previous step.
+Once the board is full by the definition of this algorithm we have found a solution.
 
 
